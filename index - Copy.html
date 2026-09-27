@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>victor.net hacking</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #05080c;
+            color: #00ff66;
+            font-family: 'Courier New', Courier, monospace;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        header {
+            border-bottom: 2px solid #00ff66;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px rgba(0, 255, 102, 0.6);
+        }
+
+        .status {
+            color: #ff0055;
+            font-weight: bold;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        #terminal-container {
+            flex: 1;
+            background: rgba(0, 20, 10, 0.8);
+            border: 1px solid #00ff66;
+            box-shadow: inset 0 0 15px rgba(0, 255, 102, 0.2), 0 0 15px rgba(0, 255, 102, 0.1);
+            padding: 15px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .code-block {
+            color: #00ff66;
+        }
+
+        .alert {
+            color: #ff0055;
+            font-weight: bold;
+        }
+
+        .system-msg {
+            color: #00ccff;
+        }
+
+        footer {
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #008844;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>CENTRAL ACCESS TERMINAL // MILTECH-OS</h1>
+        <div class="status">[ SYSTEM BREACH IN PROGRESS ]</div>
+    </header>
+
+    <div id="terminal-container">Start typing on your keyboard to execute sequence...
+
+</div>
+
+    <footer>Press any key on your keyboard to auto-generate terminal sequence code.</footer>
+
+    <script>
+        const terminal = document.getElementById('terminal-container');
+
+        // Preset code snippets to output automatically on keystrokes
+        const codeSnippets = [
+            "INITIALIZING NEURAL OVERDRIVE SEQUENCE...\n",
+            "CONNECTING TO 192.168.1.104:8080 VIA ENCRYPTED PROXY...\n",
+            "BYPASSING FIREWALL LAYER 1... [SUCCESS]\n",
+            "BYPASSING FIREWALL LAYER 2... [SUCCESS]\n",
+            "0x78 0x68 0x37 0x62 0x71 0x30 0x6C 0x68 0x6D 0x66 0x6F 0x30\n",
+            "0x79 0x33 0x74 0x6B 0x39 0x6F 0x31 0x39 0x68 0x38 0x71 0x6B\n",
+            "DECRYPTING PAYLOAD: e7xnkht4wr94r91vi78djxazgzntyyad\n",
+            "INJECTING MEMORY BUFFER OVERFLOW PRESET...\n",
+            "CRITICAL: SECURITY DAEMON DETECTED\n",
+            "EXECUTING COUNTERMEASURE: FLOODING ROUTER CACHE...\n",
+            "ACCESS GRANTED - ROOT PRIVILEGES OBTAINED.\n\n"
+        ];
+
+        let snippetIndex = 0;
+
+        // Auto-type hacker code when any key is pressed
+        document.addEventListener('keydown', (e) => {
+            // Prevent default behavior for function keys or scrolling spaces
+            if (e.key === 'Tab' || e.key === ' ') {
+                e.preventDefault();
+            }
+
+            const currentSnippet = codeSnippets[snippetIndex % codeSnippets.length];
+            
+            // Format styling based on message contents
+            const span = document.createElement('span');
+            if (currentSnippet.includes("CRITICAL")) {
+                span.className = "alert";
+            } else if (currentSnippet.includes("INITIALIZING") || currentSnippet.includes("SUCCESS")) {
+                span.className = "system-msg";
+            } else {
+                span.className = "code-block";
+            }
+
+            span.textContent = currentSnippet;
+            terminal.appendChild(span);
+
+            // Keep terminal scrolled to the bottom
+            terminal.scrollTop = terminal.scrollHeight;
+
+            snippetIndex++;
+        });
+    </script>
+</body>
+</html>
